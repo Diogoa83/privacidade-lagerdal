@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lagerdal Software — Portfólio de Jogos</title>
+  <meta name="description" content="Portfólio de jogos da Lagerdal Software." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-grad-1:#0f172a;
+      --bg-grad-2:#0b1020;
+      --card:#121a33;
+      --card-2:#0f1a38;
+      --text:#e6ecff;
+      --muted:#98a4c5;
+      --accent:#7dd3fc;
+      --accent-2:#60a5fa;
+      --chip:#1e293b;
+      --ring: rgba(125, 211, 252, .25);
+      --shadow: 0 10px 30px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, #1a2b5a33, transparent),
+                  linear-gradient(160deg, var(--bg-grad-1), var(--bg-grad-2));
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 80px; }
+    header.nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 16px 0 24px;
+    }
+    .brand {
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+    }
+    .brand .logo {
+      width:40px; height:40px; border-radius:12px; 
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+      display:grid; place-items:center; font-weight:800; color:#0b1020;
+    }
+    .brand h1 { font-size: 20px; margin: 0; letter-spacing:.3px; }
+    .nav-actions a {
+      color: var(--text); text-decoration:none; opacity:.85;
+      border:1px solid #ffffff1a; padding:10px 14px; border-radius:12px;
+    }
+    .hero {
+      display:grid; gap: 10px; margin: 10px 0 26px;
+    }
+    .hero h2 { font-size: clamp(28px, 3vw, 40px); margin: 0; }
+    .hero p { color: var(--muted); margin: 0; }
+    .grid {
+      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .game-card {
+      position:relative; background: linear-gradient(180deg, #0e162f, #0a1329);
+      border: 1px solid #ffffff14; border-radius: var(--radius); overflow: clip;
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .game-card:hover { transform: translateY(-2px); box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+    .media { position:relative; aspect-ratio: 16/7; background:#0a0f20; overflow:hidden; }
+    .media img { width:100%; height:100%; object-fit: cover; display:block; }
+    .chip {
+      position:absolute; left:16px; top:16px; padding:8px 12px; border-radius:999px;
+      background:linear-gradient(180deg,#0b1229,#0b1a38);
+      border:1px solid #ffffff26; color: var(--text); font-size: 13px; letter-spacing:.3px;
+      display:flex; align-items:center; gap:8px; box-shadow: var(--shadow);
+    }
+    .content { padding: 18px 18px 16px; }
+    .title { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .title h3 { margin: 0; font-size: 22px; line-height: 1.2; }
+    .title .tag { font-size:12px; opacity:.8; padding:6px 10px; border-radius:10px; background:#ffffff12; border:1px solid #ffffff20; }
+    .description[contenteditable="true"] {
+      margin-top:10px; padding:14px; min-height:110px; line-height:1.6;
+      border-radius: 14px; outline:none; border:1px dashed #ffffff24;
+      background: #0b1226;
+    }
+    .description[contenteditable="true"]:focus { box-shadow: 0 0 0 6px var(--ring); border-color: transparent; }
+    .description:empty:before {
+      content: attr(data-placeholder);
+      color: var(--muted);
+    }
+    .card-actions { display:flex; gap:12px; padding: 10px 0 6px; }
+    .btn {
+      -webkit-appearance: none; appearance:none; border:none; cursor:pointer;
+      padding: 12px 16px; border-radius: 12px; font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1020; box-shadow: var(--shadow);
+    }
+    .btn.secondary { background: #ffffff10; color: var(--text); border:1px solid #ffffff20; }
+    footer { margin-top: 44px; color: var(--muted); font-size: 14px; text-align:center; opacity:.9; }
+    .contact { margin-top: 8px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .contact a { color: var(--text); text-decoration:none; opacity:.9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="nav">
+      <a class="brand" href="#">
+        <div class="logo">LG</div>
+        <div>
+          <h1>Lagerdal Software</h1>
+          <div style="font-size:12px; color: var(--muted); margin-top:2px;">Jogos indie feitos com paixão</div>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="#jogos">Nossos jogos</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h2>Portfólio</h2>
+      <p>Conheça nossos títulos para PC e Mobile. Clique no espaço de descrição para editar o texto antes de publicar.</p>
+    </section>
+
+    <section id="jogos" class="grid">
+      <!-- Broken World -->
+      <article class="game-card">
+        <div class="media">
+          <img src="assets/broken-world-hero.png" alt="Broken World: Save Your Children — capa" />
+          <div class="chip" title="Plataforma">
+            <!-- Inline SVG for a tiny monitor icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"></rect>
+              <path d="M8 20h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            PC
+          </div>
+        </div>
+        <div class="content">
+          <div class="title">
+            <h3>Broken World: Save Your Children</h3>
+            <span class="tag">Ação • Sobrevivência</span>
+          </div>
+          <div id="desc-broken" class="description" data-placeholder="Em Broken World: Save Your Children, você joga como Josh, um pai lutando para manter seus filhos vivos em um apocalipse zumbi. Administre recursos, construa abrigos e faça armadilhas enquanto atravessa uma cidade infestada para chegar ao aeroporto e encontrar com sua esposa."></div>
+          <div class="card-actions">
+            <a class="btn secondary" href="https://store.steampowered.com/app/3312730/Broken_World_Save_Your_Children" target="_blank" rel="noopener">Ver na Steam</a>
+            <!--<button class="btn" onclick="exportar()">Exportar página</button> -->
+          </div>
+        </div>
+      </article>
+
+      <!-- Viking Dash -->
+      <article class="game-card">
+        <div class="media">
+          <img src="assets/viking-dash-hero.png" alt="Viking Dash — capa" />
+          <div class="chip" title="Plataforma">
+            <!-- Inline SVG for a tiny phone icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="2"></rect>
+              <circle cx="12" cy="18" r="1.2" fill="currentColor"></circle>
+            </svg>
+            Mobile
+          </div>
+        </div>
+        <div class="content">
+          <div class="title">
+            <h3>Viking Dash</h3>
+            <span class="tag">Arcade • Aventura</span>
+          </div>
+          <div id="desc-viking" class="description" data-placeholder="Em Viking Dash, você controla um guerreiro nórdico em uma jornada frenética por terras congeladas, ruínas antigas e vilas inimigas. Corra, pule, lute contra criaturas míticas e desvie de armadilhas enquanto avança por níveis desafiadores em um mundo estilizado em pixel art."></div>
+          <div class="card-actions">
+            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.lagerdal.vikingdash" target="_blank" rel="noopener">Ver na Google Play</a>
+            <!--<button class="btn" onclick="exportar()">Exportar página</button> -->
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      © 2025 Lagerdal Software. Todos os direitos reservados.
+      <div class="contact">
+        <span>Contato:</span> <a href="mailto:contato@seu-estudio.com">contato@seu-estudio.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Permite exportar a página já com as descrições editadas
+    function exportar() {
+      const broken = document.getElementById('desc-broken').innerHTML;
+      const viking = document.getElementById('desc-viking').innerHTML;
+      // Clona o documento para gerar um snapshot
+      const doc = document.documentElement.cloneNode(true);
+      doc.querySelector('#desc-broken').innerHTML = broken;
+      doc.querySelector('#desc-viking').innerHTML = viking;
+
+      // Remove os botões "Exportar" do arquivo gerado
+      doc.querySelectorAll('.btn').forEach(b => { if (b.textContent.includes('Exportar')) b.remove(); });
+
+      const htmlString = '<!DOCTYPE html>\n' + doc.outerHTML;
+      const blob = new Blob([htmlString], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    }
+  </script>
+</body>
+</html>
